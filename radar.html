@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Global Ops Dashboard</title>
+<title>Global Ops - Weather Radar</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -76,48 +76,10 @@ iframe {
 
 <body>
 
-<header>GLOBAL REPORTING DASHBOARD <a href="./advanced.html">See Advanced Weather Mapping</a><a href="./advanced.html">See Weather Radar</a></header>
+<header>WEATHER RADAR <a href="./index.html">Back</a></header>
 
 <div class="grid">
-    <div class="card" onclick="openFullscreen(this)">
-        <h3>Weather - Wexford</h3>
-        <iframe src="https://wttr.in/Wexford"></iframe>
-    </div>
-    <div class="card" onclick="openFullscreen(this)">
-        <h3>Weather - Dublin</h3>
-        <iframe src="https://wttr.in/Dublin"></iframe>
-    </div>
-
-    <div class="card" onclick="openFullscreen(this)">
-        <h3>Traffic - Wexford</h3>
-        <iframe src="https://maps.google.com/maps?q=Wexford&t=&z=13&output=embed"></iframe>
-    </div>
-
-    <div class="card" onclick="openFullscreen(this)">
-        <h3>Traffic - Eniscorthy</h3>
-        <iframe src="https://maps.google.com/maps?q=Eniscorthy&t=&z=13&output=embed"></iframe>
-    </div>
-
-    <div class="card" onclick="openFullscreen(this)">
-        <h3>Traffic - Gorey</h3>
-        <iframe src="https://maps.google.com/maps?q=Gorey&t=&z=13&output=embed"></iframe>
-    </div>
-
-    <div class="card" onclick="openFullscreen(this)">
-        <h3>Traffic - Bunclody</h3>
-        <iframe src="https://maps.google.com/maps?q=Bunclody&t=&z=13&output=embed"></iframe>
-    </div>
-
-    <div class="card" onclick="openFullscreen(this)">
-        <h3>Markets</h3>
-        <iframe src="https://s.tradingview.com/widgetembed/?symbol=NASDAQ:AAPL"></iframe>
-    </div>
-
-    <div class="card" onclick="openFullscreen(this)">
-        <h3>Crypto</h3>
-        <iframe src="https://s.tradingview.com/widgetembed/?symbol=BINANCE:BTCUSDT"></iframe>
-    </div>
-
+    <iframe src="https://embed.windy.com/embed2.html?lat=52.34&lon=-6.46&zoom=7&level=surface&overlay=rain"></iframe>
 </div>
 
 <div id="overlay">

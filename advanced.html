@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Global Ops Dashboard</title>
+<title>Global Ops - Advanced Weather</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -71,59 +71,52 @@ iframe {
     cursor: pointer;
     color: white;
 }
+.weatherBox {
+    font-size: 14px;
+    line-height: 1.6;
+}
 </style>
 </head>
 
 <body>
 
-<header>GLOBAL REPORTING DASHBOARD <a href="./advanced.html">See Advanced Weather Mapping</a><a href="./advanced.html">See Weather Radar</a></header>
+<header>ADVANCED WEATHER MAPPING <a href="./index.html">Back</a></header>
 
 <div class="grid">
     <div class="card" onclick="openFullscreen(this)">
-        <h3>Weather - Wexford</h3>
-        <iframe src="https://wttr.in/Wexford"></iframe>
+        <h3>Weather - Wexford (Advanced)</h3>
+        <div class="weatherBox" id="weather-wexford">Loading...</div>
     </div>
-    <div class="card" onclick="openFullscreen(this)">
-        <h3>Weather - Dublin</h3>
-        <iframe src="https://wttr.in/Dublin"></iframe>
-    </div>
-
-    <div class="card" onclick="openFullscreen(this)">
-        <h3>Traffic - Wexford</h3>
-        <iframe src="https://maps.google.com/maps?q=Wexford&t=&z=13&output=embed"></iframe>
-    </div>
-
-    <div class="card" onclick="openFullscreen(this)">
-        <h3>Traffic - Eniscorthy</h3>
-        <iframe src="https://maps.google.com/maps?q=Eniscorthy&t=&z=13&output=embed"></iframe>
-    </div>
-
-    <div class="card" onclick="openFullscreen(this)">
-        <h3>Traffic - Gorey</h3>
-        <iframe src="https://maps.google.com/maps?q=Gorey&t=&z=13&output=embed"></iframe>
-    </div>
-
-    <div class="card" onclick="openFullscreen(this)">
-        <h3>Traffic - Bunclody</h3>
-        <iframe src="https://maps.google.com/maps?q=Bunclody&t=&z=13&output=embed"></iframe>
-    </div>
-
-    <div class="card" onclick="openFullscreen(this)">
-        <h3>Markets</h3>
-        <iframe src="https://s.tradingview.com/widgetembed/?symbol=NASDAQ:AAPL"></iframe>
-    </div>
-
-    <div class="card" onclick="openFullscreen(this)">
-        <h3>Crypto</h3>
-        <iframe src="https://s.tradingview.com/widgetembed/?symbol=BINANCE:BTCUSDT"></iframe>
-    </div>
-
 </div>
 
 <div id="overlay">
     <div id="closeBtn" onclick="closeFullscreen()">✖</div>
     <div id="overlayContent"></div>
 </div>
+
+<script>
+const API_KEY = "3fef706892496e493bb2a80e8b4c84fe";
+
+async function loadWeather(city, elementId) {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
+    
+    const res = await fetch(url);
+    const data = await res.json();
+
+    const html = `
+        Temp: ${data.main.temp}°C (Feels ${data.main.feels_like}°C)<br>
+        Humidity: ${data.main.humidity}%<br>
+        Wind: ${data.wind.speed} m/s<br>
+        Pressure: ${data.main.pressure} hPa<br>
+        Visibility: ${data.visibility / 1000} km<br>
+        Condition: ${data.weather[0].description}
+    `;
+
+    document.getElementById(elementId).innerHTML = html;
+}
+
+loadWeather("Wexford", "weather-wexford");
+</script>
 
 <script>
 function openFullscreen(card) {
